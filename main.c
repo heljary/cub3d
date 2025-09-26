@@ -22,6 +22,7 @@ int main(void)
     }
     game->size_pxl = 30;
     game->player.angle = 0;
+    game->player.fov = 60;
     game->player.dir_x = cos(game->player.angle);
     game->player.dir_y = sin(game->player.angle);
     game->img->img = mlx_new_image(game->mlx,SCREEN_WIDTH,SCREEN_HEIGHT);

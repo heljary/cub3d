@@ -26,6 +26,7 @@ typedef struct s_player {
     float x, y;           // Position f map
     float dir_x, dir_y;   // Direction vector
     float plane_x, plane_y; // Camera plane (FOV)
+    float fov;
     float speed;          // Movement speed
     float angle;
 } t_player;

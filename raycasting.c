@@ -156,3 +156,15 @@ void send_one_ray_to_wall(t_game *game)
         my_mlx_pixel_put(game->img,(int)(ray_x * game->size_pxl),(int)(ray_y * game->size_pxl),0xFF0000);
     }
 }
+
+
+void send_more_rays(t_game *game)
+{
+    int i = 0;
+    float angle_rays = game->player.fov/SCREEN_WIDTH;
+    while (i < SCREEN_WIDTH)
+    {
+        
+    }
+    
+}

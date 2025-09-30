@@ -22,7 +22,9 @@ int main(void)
     }
     game->size_pxl = 30;
     game->player.angle = 0;
-    game->player.fov = 60;
+    game->map_width = 27;
+    game->map_height = 14;
+    game->player.fov = Pi / 3;
     game->player.dir_x = cos(game->player.angle);
     game->player.dir_y = sin(game->player.angle);
     game->img->img = mlx_new_image(game->mlx,SCREEN_WIDTH,SCREEN_HEIGHT);
@@ -31,6 +33,7 @@ int main(void)
     game->player.y = 5.0;
     draw_minimap(game);
     draw_player(game);
+    // send_more_rays(game);
     mlx_put_image_to_window(game->mlx,game->win,game->img->img,0,0);
     mlx_key_hook(game->win,key_hook,game);
     mlx_hook(game->win, 17, 1L<<17, close_window,game);

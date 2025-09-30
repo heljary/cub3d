@@ -22,6 +22,13 @@
 #define Key_R  65363
 #define Key_DW 65364
 
+
+
+#define MAP_WIDTH 15
+#define MAP_HEIGHT 28
+#define MAX_DISTANCE_SQ 400.0f // 20.0f * 20.0f
+#define MIN_DISTANCE 0.1f
+
 typedef struct s_player {
     float x, y;           // Position f map
     float dir_x, dir_y;   // Direction vector
@@ -85,6 +92,9 @@ void    draw_tile(t_game *game,int map_x, int map_y, unsigned int color);
 void draw_minimap(t_game *game);
 void draw_player(t_game *game);
 int key_hook(int key,void *pram);
+void send_more_rays(t_game *game);
+extern char *hardcoded_map[];
+
 
 
 

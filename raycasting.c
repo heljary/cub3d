@@ -1,26 +1,7 @@
 #include "cub3d.h"
 
-char *hardcoded_map[] = {
-    "111111111111111111111111111",
-    "110000000000000000000000001",
-    "10000000000000000P000000001",
-    "100000000000000000000000001",
-    "100000000000000000000000001",
-    "100000000000000000000000001",
-    "100000000000100000000000001",
-    "100000000000100000000000001",
-    "100000000000100000000000001",
-    "100000000000000000000000001",
-    "100000000000000000000000001",
-    "100000000000000000000000001",
-    "100000000000000000000000001",
-    "100000000000000000000000001",
-    "111111111111111111111111111",
-    NULL
-};
-
-
 void send_one_ray_to_wall(t_game *game);
+void send_more_rays(t_game *game);
 
 
 
@@ -82,10 +63,19 @@ void draw_player(t_game *game)
     int py = (int)(game->player.y * tile_size + tile_size / 2);
     int player_size = tile_size / 2;
 
-    for (int y = py; y < py + player_size; y++)
-        for (int x = px; x < px + player_size; x++)
+    int y = py;
+    while (y < py + player_size)
+    {
+        int x = px;
+        while (x < px + player_size)
+        {
             my_mlx_pixel_put(game->img, x, y, 0x00FF00);
+            x++;
+        }
+        y++;
+    }
 }
+
 
 
 int key_hook(int key, void *pram)
@@ -108,30 +98,29 @@ int key_hook(int key, void *pram)
     if (game->player.angle < 0)
         game->player.angle += 2 * Pi;
 
-    if (key == Key_A) { // left
+    if (key == Key_A) {
         new_x = game->player.x - sin(game->player.angle) * speed;
         new_y = game->player.y + cos(game->player.angle) * speed;
     }
-    if (key == Key_D) { // right
+    if (key == Key_D) {
         new_x = game->player.x + sin(game->player.angle) * speed;
         new_y = game->player.y - cos(game->player.angle) * speed;
     }
-    if (key == Key_S || key == Key_DW) { // backward
+    if (key == Key_S || key == Key_DW) {
         new_x = game->player.x - cos(game->player.angle) * speed;
         new_y = game->player.y - sin(game->player.angle) * speed;
     }
-    if (key == Key_W || key == Key_UP) { // forward
+    if (key == Key_W || key == Key_UP) {
         new_x = game->player.x + cos(game->player.angle) * speed;
         new_y = game->player.y + sin(game->player.angle) * speed;
     }
     game->player.x = new_x;
     game->player.y = new_y;
 
-
-    // redraw
     draw_minimap(game);
     draw_player(game);
     send_one_ray_to_wall(game);
+    send_more_rays(game);
     mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
 
     return 0;
@@ -161,10 +150,30 @@ void send_one_ray_to_wall(t_game *game)
 void send_more_rays(t_game *game)
 {
     int i = 0;
-    float angle_rays = game->player.fov/SCREEN_WIDTH;
+    float angle_rays = (game->player.fov/SCREEN_WIDTH);
+    float first_ray_angle = game->player.angle - (game->player.fov / 2);
     while (i < SCREEN_WIDTH)
     {
-        
+        float ray_angle = first_ray_angle + i * angle_rays;
+        game->player.dir_x = cos(ray_angle);
+        game->player.dir_y = sin(ray_angle);
+
+        float ray_x = game->player.x + 0.75;
+        float ray_y = game->player.y + 0.75;
+
+        float step = 0.01;
+        while (hardcoded_map[(int)ray_y][(int)ray_x] != '1')
+        {
+            ray_x += game->player.dir_x * step;
+            ray_y += game->player.dir_y * step;
+            my_mlx_pixel_put(game->img, (int)(ray_x * game->size_pxl), (int)(ray_y * game->size_pxl), 0xFF0000);
+        }
+        i++;
     }
+}
+
+
+void convert_3d(){
     
 }
+

@@ -6,10 +6,11 @@
 #include <stdlib.h>
 #include <string.h>
 # define Pi 3.14159265358979323846
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 600
+#define SCREEN_WIDTH 1920
+#define SCREEN_HEIGHT 1000
 #define CEILING_COLOR 0x87CEEB
 #define FLOOR_COLOR 0x8B4513
+#define WALL_COLOR 0x468549
 
 
 #define Key_A  97
@@ -93,6 +94,8 @@ void draw_minimap(t_game *game);
 void draw_player(t_game *game);
 int key_hook(int key,void *pram);
 void send_more_rays(t_game *game);
+void draw_background(t_game *game);
+void wall_height_projection(t_game *game);
 extern char *hardcoded_map[];
 
 

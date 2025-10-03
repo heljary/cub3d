@@ -1,10 +1,5 @@
 #include "cub3d.h"
 
-// void send_one_ray_to_wall(t_game *game);
-// void send_more_rays(t_game *game);
-
-
-
 void my_mlx_pixel_put(t_img *img,int x,int y,unsigned int color)
 {
     if (x < 0 || y < 0)
@@ -47,9 +42,9 @@ void draw_minimap(t_game *game)
         while (hardcoded_map[y][x])
         {
             if(hardcoded_map[y][x] == '1')
-                draw_tile(game,x,y,0xFFFFFF);
+                draw_tile(game,x,y,0xE67514);
             if(hardcoded_map[y][x] == '0')
-                draw_tile(game,x,y,0x000000);
+                draw_tile(game,x,y,0x00FF00);
             x++;
         }
         y++;
@@ -58,23 +53,22 @@ void draw_minimap(t_game *game)
 
 void draw_player(t_game *game)
 {
-    int tile_size = game->size_pxl;
-    int px = (int)(game->player.x * tile_size + tile_size / 2);
-    int py = (int)(game->player.y * tile_size + tile_size / 2);
-    int player_size = tile_size / 2;
+    int px_start = (int)(game->player.x * game->size_pxl);
+    int py_start = (int)(game->player.y * game->size_pxl);
 
-    int y = py;
-    while (y < py + player_size)
+    int y = py_start;
+    while (y < py_start + game->size_pxl)
     {
-        int x = px;
-        while (x < px + player_size)
+        int x = px_start;
+        while (x < px_start + game->size_pxl)
         {
-            my_mlx_pixel_put(game->img, x, y, 0xFF0000);
+            my_mlx_pixel_put(game->img, x, y, 0x27445D);
             x++;
         }
         y++;
     }
 }
+
 
 
 float calcule_distance(float ray_x,float ray_y,float px, float py)
@@ -86,8 +80,8 @@ float calcule_distance(float ray_x,float ray_y,float px, float py)
 }
 
 float get_ray_distance(t_game *game,float ray_angle){
-    float ray_x = game->player.x + 0.75;
-    float ray_y = game->player.y + 0.75;
+    float ray_x = game->player.x + 0.5;
+    float ray_y = game->player.y + 0.5;
     game->player.dir_x = cos(ray_angle);
     game->player.dir_y = sin(ray_angle);
     float step = 0.01;
@@ -95,7 +89,7 @@ float get_ray_distance(t_game *game,float ray_angle){
     {
         ray_x += game->player.dir_x * step;
         ray_y += game->player.dir_y * step;
-        my_mlx_pixel_put(game->img,(int)(ray_x * game->size_pxl),(int)(ray_y * game->size_pxl),0x00FF00);
+        my_mlx_pixel_put(game->img,(int)(ray_x * game->size_pxl),(int)(ray_y * game->size_pxl),0xE52020);
     }
     float distance = calcule_distance(ray_x,ray_y,game->player.x,game->player.y);
     return (distance);
@@ -127,13 +121,12 @@ void wall_height_projection(t_game *game)
     int column = 0;
     while(column < SCREEN_WIDTH -1)
     {
-        float ray_angle = game->player.angle - (game->player.fov/2) + column * (game->player.fov / SCREEN_WIDTH);
+        float ray_angle = game->player.angle - (game->player.fov/2) + (float)column * (game->player.fov / SCREEN_WIDTH);
         float distance = get_ray_distance(game ,ray_angle);
-    
-        float wall_height = SCREEN_HEIGHT / distance;
+        float fish_eye_distance = distance * cos(ray_angle - game->player.angle);
+        float wall_height = SCREEN_HEIGHT / fish_eye_distance;
         float start_y = (SCREEN_HEIGHT/2) - (wall_height/2);
         float end_y = (SCREEN_HEIGHT/2) + (wall_height/2);
-    
         int y = start_y;
         while (y < end_y)
         {
@@ -144,49 +137,65 @@ void wall_height_projection(t_game *game)
     }
 }
 
-int key_hook(int key, void *pram)
+
+void Key__A(t_game *game, float *new_x,float *new_y,float speed){
+    *new_x = game->player.x - sin(game->player.angle) * speed;
+    *new_y = game->player.y + cos(game->player.angle) * speed;
+}
+
+
+void Key__D(t_game *game, float *new_x,float *new_y,float speed){
+    *new_x = game->player.x + sin(game->player.angle) * speed;
+    *new_y = game->player.y - cos(game->player.angle) * speed;
+}
+
+void Key__S__DW(t_game *game, float *new_x,float *new_y,float speed){
+    *new_x = game->player.x - cos(game->player.angle) * speed;
+    *new_y = game->player.y - sin(game->player.angle) * speed;
+}
+
+void Key__W__UP(t_game *game, float *new_x,float *new_y,float speed){
+    *new_x = game->player.x + cos(game->player.angle) * speed;
+    *new_y = game->player.y + sin(game->player.angle) * speed;
+}
+
+void ft_redraw(t_game *game)
 {
-    t_game *game = (t_game*)pram;
-    mlx_clear_window(game->mlx, game->win);
-
-    float new_x = game->player.x;
-    float new_y = game->player.y;
-    float speed = 0.5;
-    float rot_speed = 0.1;
-
-    if (key == Key_L)
-        game->player.angle -= rot_speed;
-    if (key == Key_R)
-        game->player.angle += rot_speed;
-
-    if (game->player.angle >= 2 * Pi)
-        game->player.angle -= 2 * Pi;
-    if (game->player.angle < 0)
-        game->player.angle += 2 * Pi;
-
-    if (key == Key_A) {
-        new_x = game->player.x - sin(game->player.angle) * speed;
-        new_y = game->player.y + cos(game->player.angle) * speed;
-    }
-    if (key == Key_D) {
-        new_x = game->player.x + sin(game->player.angle) * speed;
-        new_y = game->player.y - cos(game->player.angle) * speed;
-    }
-    if (key == Key_S || key == Key_DW) {
-        new_x = game->player.x - cos(game->player.angle) * speed;
-        new_y = game->player.y - sin(game->player.angle) * speed;
-    }
-    if (key == Key_W || key == Key_UP) {
-        new_x = game->player.x + cos(game->player.angle) * speed;
-        new_y = game->player.y + sin(game->player.angle) * speed;
-    }
-    game->player.x = new_x;
-    game->player.y = new_y;
     draw_background(game);
     draw_minimap(game);
     draw_player(game);
     wall_height_projection(game);
-    mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
+}
 
+int key_hook(int key, void *pram)
+{
+    t_game *game = (t_game*)pram;
+    mlx_clear_window(game->mlx, game->win);
+    float new_x = game->player.x;
+    float new_y = game->player.y;
+    float speed = 0.5;
+    float rot_speed = 0.1;
+    if (key == Key_ESC)
+        close_window(game);
+    if (key == Key_L)
+        game->player.angle -= rot_speed;
+    if (key == Key_R)
+        game->player.angle += rot_speed;
+    while (game->player.angle >= 2 * Pi)
+        game->player.angle -= 2 * Pi;
+    while (game->player.angle < 0)
+        game->player.angle += 2 * Pi;
+    if (key == Key_A)
+        Key__A(game,&new_x,&new_y,speed);
+    if (key == Key_D)
+        Key__D(game,&new_x,&new_y,speed);
+    if (key == Key_S || key == Key_DW)
+        Key__S__DW(game,&new_x,&new_y,speed);
+    if (key == Key_W || key == Key_UP)
+        Key__W__UP(game,&new_x,&new_y,speed);
+    game->player.x = new_x;
+    game->player.y = new_y;
+    ft_redraw(game);
+    mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
     return 0;
 }

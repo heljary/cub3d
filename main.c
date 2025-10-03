@@ -31,10 +31,10 @@ int main(void)
     game->img->addr = mlx_get_data_addr(game->img->img, &game->img->bpp, &game->img->line_len, &game->img->endian);
     game->player.x = 5.0;
     game->player.y = 7.0;
-    // draw_background(game);
+    draw_background(game);
     draw_minimap(game);
     draw_player(game);
-    // wall_height_projection(game);
+    wall_height_projection(game);
     mlx_put_image_to_window(game->mlx,game->win,game->img->img,0,0);
     mlx_key_hook(game->win,key_hook,game);
     mlx_hook(game->win, 17, 1L<<17, close_window,game);

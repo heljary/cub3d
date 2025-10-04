@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 # define Pi 3.14159265358979323846
-#define SCREEN_WIDTH 2900
-#define SCREEN_HEIGHT 1800
+#define SCREEN_WIDTH 1800
+#define SCREEN_HEIGHT 800
 #define CEILING_COLOR 0x000000
 #define FLOOR_COLOR 0x8B4513
 #define WALL_COLOR 0xFFFFFF

@@ -1,30 +1,21 @@
-# Project name
 NAME		= cub3D
 
-# Compiler and flags
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g
-
-# Directories
 SRCDIR		= .
 OBJDIR		= obj
 INCDIR		= include
 
-# Source files
 SRCFILES	= main.c \
 			  raycasting.c
 
-# Object files
 OBJS		= $(SRCFILES:%.c=$(OBJDIR)/%.o)
 
-# MLX
 MLX_DIR		= minilibx
 MLX_FLAGS	= -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
 
-# Includes
 INCLUDES	= -I$(INCDIR) -I$(MLX_DIR)
 
-# Rules
 all: $(NAME)
 
 $(NAME): $(OBJS)

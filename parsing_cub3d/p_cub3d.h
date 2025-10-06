@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 15:14:52 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/06 16:34:13 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/06 16:54:37 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ typedef struct s_data
 
 typedef struct s_file
 {
-    char **config_textures;
+    char **config_lines; 
     char **map_lines;
-    int   directions;
-    int   raw_map;
+    int   direction_count;
+    int   raw_map_started;
 }   t_file;
 
 

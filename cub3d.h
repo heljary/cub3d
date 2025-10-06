@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 09:45:11 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/06 14:46:51 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/06 16:39:06 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 typedef struct s_player {
     float x, y;
     float dir_x, dir_y;
-    float fov;
+    float fov ;
     float speed;
     float angle;
 } t_player;

@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 15:14:52 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/06 15:32:03 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/06 16:34:13 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ typedef struct s_config
 
 typedef struct s_map
 {
-    char    **grid;        // 2D array of map chars
+    char    **map;
     int     width;
     int     height;
-    double  player_x;
-    double  player_y;
+    float  player_x;
+    float  player_y;
     char    player_dir;
 }   t_map;
 
 typedef struct s_data
 {
-    t_config config;  // textures and colors
-    t_map map;        // map grid and player info
+    t_config config;
+    t_map map;
 }   t_data;
 
 

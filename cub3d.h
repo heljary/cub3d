@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 09:45:11 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/05 09:45:12 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:46:51 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-# define Pi 3.14159265358979323846
+#define Pi 3.14159265358979323846
 #define SCREEN_WIDTH 1800
 #define SCREEN_HEIGHT 800
 #define CEILING_COLOR 0x000000

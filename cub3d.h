@@ -8,7 +8,7 @@
 # define Pi 3.14159265358979323846
 #define SCREEN_WIDTH 1000
 #define SCREEN_HEIGHT 800
-#define CEILING_COLOR 0x87CEEB
+#define CEILING_COLOR 0x000000 //0x87CEEB
 #define FLOOR_COLOR 0x8B4513
 #define WALL_COLOR 0xFFFFFF
 #define Dog_to_Rad(x) ((x) * Pi / 180.0)
@@ -41,25 +41,32 @@ typedef struct s_img {
     int bpp, line_len, endian;
 } t_img;
 
+
+typedef struct s_map
+{
+    char    **map;
+    int     width;
+    int     height;
+    float  player_x;
+    float  player_y;
+    char    player_dir;
+}   t_map;
+
 typedef struct s_game {
     void *mlx;
     int size_pxl;
     void *win;
-    char **map;
     t_player player;
     t_img *img;
+    t_map   map;
     int map_width, map_height;
 } t_game;
 
 
 int close_window(t_game *game);
 void    draw_tile(t_game *game,int map_x, int map_y, unsigned int color);
-void draw_minimap(t_game *game);
-void draw_player(t_game *game);
+void ft_draw(t_game *game);
 int key_hook(int key,void *pram);
-void send_more_rays(t_game *game);
-void draw_background(t_game *game);
-void wall_height_projection(t_game *game);
-extern char *hardcoded_map[];
+// extern char *hardcoded_map[];
 
 #endif

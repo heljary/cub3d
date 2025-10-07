@@ -36,14 +36,14 @@ void draw_tile(t_game *game,int map_x, int map_y, unsigned int color)
 void draw_minimap(t_game *game)
 {
     int y = 0;
-    while(hardcoded_map[y])
+    while(game->map.map[y])
     {
         int x = 0;
-        while (hardcoded_map[y][x])
+        while (game->map.map[y][x])
         {
-            if(hardcoded_map[y][x] == '1')
+            if(game->map.map[y][x] == '1')
                 draw_tile(game,x,y,0xE67514);
-            if(hardcoded_map[y][x] == '0')
+            if(game->map.map[y][x] == '0')
                 draw_tile(game,x,y,0x00FF00);
             x++;
         }
@@ -85,7 +85,7 @@ float get_ray_distance(t_game *game,float ray_angle){
     game->player.dir_x = cos(ray_angle);
     game->player.dir_y = sin(ray_angle);
     float step = 0.01;
-    while(hardcoded_map[(int)ray_y][(int)ray_x] != '1')
+    while(game->map.map[(int)ray_y][(int)ray_x] != '1')
     {
         ray_x += game->player.dir_x * step;
         ray_y += game->player.dir_y * step;
@@ -159,12 +159,13 @@ void Key__W__UP(t_game *game, float *new_x,float *new_y,float speed){
     *new_y = game->player.y + sin(game->player.angle) * speed;
 }
 
-void ft_redraw(t_game *game)
+void ft_draw(t_game *game)
 {
     draw_background(game);
     draw_minimap(game);
     draw_player(game);
     wall_height_projection(game);
+    mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
 }
 
 int key_hook(int key, void *pram)
@@ -195,7 +196,6 @@ int key_hook(int key, void *pram)
         Key__W__UP(game,&new_x,&new_y,speed);
     game->player.x = new_x;
     game->player.y = new_y;
-    ft_redraw(game);
-    mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
+    ft_draw(game);
     return 0;
 }

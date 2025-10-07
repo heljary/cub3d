@@ -14,6 +14,33 @@ int main(void)
         return (1);
     }
     
+    game->map.map = (char*[]){
+        "111111111111111111111111111",
+        "100000000000000000000000001",
+        "100000000000000000000000001",
+        "100000000000000000000000001",
+        "100000000000000000000000001",
+        "100000000000000000000000001",
+        "100000000000100000000000001",
+        "100000000000100000000000001",
+        "100000000000111111111110001",
+        "100000000000000000000000001",
+        "100000000000000000000000001",
+        "100000000000000000000000001",
+        "100000000000000000000000001",
+        "100000000000000000000000001",
+        "111111111111111111111111111",
+        NULL
+    };
+
+    game->map.width = 27;
+    game->map.height = 15;
+    game->map.player_x = 2.5;
+    game->map.player_y = 2.5;
+    game->map.player_dir = 'N';
+
+
+
     game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
     if (!game->win)
     {
@@ -31,11 +58,7 @@ int main(void)
     game->img->addr = mlx_get_data_addr(game->img->img, &game->img->bpp, &game->img->line_len, &game->img->endian);
     game->player.x = 5.0;
     game->player.y = 7.0;
-    // draw_background(game);
-    draw_minimap(game);
-    draw_player(game);
-    // wall_height_projection(game);
-    mlx_put_image_to_window(game->mlx,game->win,game->img->img,0,0);
+    ft_draw(game);
     mlx_key_hook(game->win,key_hook,game);
     mlx_hook(game->win, 17, 1L<<17, close_window,game);
     mlx_loop(game->mlx);

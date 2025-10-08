@@ -21,9 +21,9 @@ int main(void)
         "100000000000000000000000001",
         "100000000000000000000000001",
         "100000000000000000000000001",
-        "100000000000100000000000001",
-        "100000000000100000000000001",
-        "100000000000111111111110001",
+        "100000000000000000000000001",
+        "100000000000000000000000001",
+        "100000000000000000000000001",
         "100000000000000000000000001",
         "100000000000000000000000001",
         "100000000000000000000000001",
@@ -51,7 +51,7 @@ int main(void)
     game->player.angle = Dog_to_Rad(0);
     game->map_width = 27;
     game->map_height = 14;
-    game->player.fov = Dog_to_Rad(60);
+    game->player.fov = Dog_to_Rad(45);
     game->player.dir_x = cos(game->player.angle);
     game->player.dir_y = sin(game->player.angle);
     game->img->img = mlx_new_image(game->mlx,SCREEN_WIDTH,SCREEN_HEIGHT);

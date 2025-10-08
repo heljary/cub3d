@@ -63,10 +63,22 @@ typedef struct s_game {
 } t_game;
 
 
-int close_window(t_game *game);
-void    draw_tile(t_game *game,int map_x, int map_y, unsigned int color);
-void ft_draw(t_game *game);
-int key_hook(int key,void *pram);
-// extern char *hardcoded_map[];
+void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color);
+int		close_window(t_game *game);
+void	draw_tile(t_game *game, int map_x, int map_y, unsigned int color);
+void	draw_minimap(t_game *game);
+int		is_valid_pos(t_game *game, float x, float y);
+void	draw_player(t_game *game);
+float	calcule_distance(float ray_x, float ray_y, float px, float py);
+float	get_ray_distance(t_game *game, float ray_angle);
+void	draw_background(t_game *game);
+void	wall_height_projection(t_game *game);
+void	Key__A(t_game *game, float *new_x, float *new_y, float speed);
+void	Key__D(t_game *game, float *new_x, float *new_y, float speed);
+void	Key__S__DW(t_game *game, float *new_x, float *new_y, float speed);
+void	Key__W__UP(t_game *game, float *new_x, float *new_y, float speed);
+void	ft_draw(t_game *game);
+void	ft_move(t_game *game, int key, float *new_x, float *new_y, float speed);
+int		key_hook(int key, void *pram);
 
 #endif

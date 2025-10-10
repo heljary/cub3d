@@ -1,13 +1,12 @@
 NAME		= cub3D
-
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g
 SRCDIR		= .
 OBJDIR		= obj
 INCDIR		= include
 
-SRCFILES	= main.c \
-			  raycasting.c
+SRCFILES	= main.c raycasting.c \
+			
 
 OBJS		= $(SRCFILES:%.c=$(OBJDIR)/%.o)
 

@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 09:45:08 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/05 09:45:09 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/11 15:19:41 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,26 @@ int main(void)
         return (1);
     }
     
+    game->map.map = (char*[]){
+    "1111111111111111111111111",
+    "1000000000110000000000001",
+    "1011000001110000000000001",
+    "1001000000000000000000001",
+    "1111111110110000011100001",
+    "1000000000110000011100001",
+    "1000000000000000000000001",
+    "1111111111111111111111111",
+        NULL
+    };
+
+    game->map.width = 27;
+    game->map.height = 15;
+    game->map.player_x = 2.5;
+    game->map.player_y = 2.5;
+    game->map.player_dir = 'N';
+
+
+
     game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
     if (!game->win)
     {
@@ -36,7 +56,7 @@ int main(void)
     game->player.angle = Dog_to_Rad(0);
     game->map_width = 27;
     game->map_height = 14;
-    game->player.fov = Dog_to_Rad(60);
+    game->player.fov = Dog_to_Rad(45);
     game->player.dir_x = cos(game->player.angle);
     game->player.dir_y = sin(game->player.angle);
     game->img->img = mlx_new_image(game->mlx,SCREEN_WIDTH,SCREEN_HEIGHT);
@@ -48,6 +68,7 @@ int main(void)
     draw_player(game);
     wall_height_projection(game);
     mlx_put_image_to_window(game->mlx,game->win,game->img->img,0,0);
+    ft_draw(game);
     mlx_key_hook(game->win,key_hook,game);
     mlx_hook(game->win, 17, 1L<<17, close_window,game);
     mlx_loop(game->mlx);

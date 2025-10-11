@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 09:45:11 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/06 16:39:06 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/11 15:21:27 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #define SCREEN_WIDTH 1800
 #define SCREEN_HEIGHT 800
 #define CEILING_COLOR 0x000000
+#define CEILING_COLOR 0x000000 //0x87CEEB
 #define FLOOR_COLOR 0x8B4513
 #define WALL_COLOR 0xFFFFFF
 #define Dog_to_Rad(x) ((x) * Pi / 180.0)
@@ -53,25 +54,46 @@ typedef struct s_img {
     int bpp, line_len, endian;
 } t_img;
 
+
+typedef struct s_map
+{
+    char    **map;
+    int     width;
+    int     height;
+    float  player_x;
+    float  player_y;
+    char    player_dir;
+}   t_map;
+
 typedef struct s_game {
     void *mlx;
     int size_pxl;
     void *win;
-    char **map;
     t_player player;
     t_img *img;
+    t_map   map;
     int map_width, map_height;
 } t_game;
 
 
-int close_window(t_game *game);
-void    draw_tile(t_game *game,int map_x, int map_y, unsigned int color);
-void draw_minimap(t_game *game);
-void draw_player(t_game *game);
-int key_hook(int key,void *pram);
-void send_more_rays(t_game *game);
-void draw_background(t_game *game);
-void wall_height_projection(t_game *game);
-extern char *hardcoded_map[];
+void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color);
+int		close_window(t_game *game);
+void	draw_tile(t_game *game, int map_x, int map_y, unsigned int color);
+void	draw_minimap(t_game *game);
+int		is_valid_pos(t_game *game, float x, float y);
+void	draw_player(t_game *game);
+float	calcule_distance(float ray_x, float ray_y, float px, float py);
+float	get_ray_distance(t_game *game, float ray_angle);
+void	draw_background(t_game *game);
+void	wall_height_projection(t_game *game);
+void	Key__A(t_game *game, float *new_x, float *new_y, float speed);
+void	Key__D(t_game *game, float *new_x, float *new_y, float speed);
+void	Key__S__DW(t_game *game, float *new_x, float *new_y, float speed);
+void	Key__W__UP(t_game *game, float *new_x, float *new_y, float speed);
+void	ft_draw(t_game *game);
+void	ft_move(t_game *game, int key, float *new_x, float *new_y, float speed);
+int		key_hook(int key, void *pram);
 
 #endif
+
+

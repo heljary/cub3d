@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 15:14:52 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/11 18:24:39 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/12 11:49:21 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,24 @@ typedef struct s_colors
     int floor;
     int ceiling;
 } s_colors;
+
+
+typedef struct s_map
+{
+    char **grid_map;
+    int width;
+    int height;
+} t_map;
+
+typedef struct s_data
+{
+    t_textures textures;
+    s_colors colors;
+    t_map map;
+} s_data;
+
+
+
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 15:14:52 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/12 11:49:21 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:11:58 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_textures
 
 typedef struct s_colors
 {
-    int floor;
-    int ceiling;
+    int floor[3];
+    int ceiling[3];
 } s_colors;
 
 

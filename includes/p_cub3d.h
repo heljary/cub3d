@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 15:14:52 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/14 09:10:09 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/14 09:50:56 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_textures
 
 typedef struct s_colors
 {
-    int floor[3];
-    int ceiling[3];
+    int floor; // i should to shift it
+    int ceiling; // i should to shift it
 } t_colors;
 
 
@@ -42,6 +42,7 @@ typedef struct s_map
 
 typedef struct s_data
 {
+    char **file_cub;
     t_textures textures;
     t_colors colors;
     t_map map;

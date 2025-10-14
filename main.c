@@ -6,11 +6,12 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 09:45:08 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/12 10:59:05 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/14 09:45:47 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
 int main(void)
 {
     t_game *game;

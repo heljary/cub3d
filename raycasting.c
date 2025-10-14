@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 12:08:11 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/10 12:08:14 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/14 09:08:06 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void wall_height_projection(t_game *game)
         float distance = get_ray_distance(game ,ray_angle);
         float fish_eye_distance = distance * cos(ray_angle - game->player.angle);
         if (fish_eye_distance < 0)
-            fish_eye_distance = 0.01f;
+            fish_eye_distance = 0.05f;
         float wall_height = SCREEN_HEIGHT / fish_eye_distance;
         float start_y = (SCREEN_HEIGHT/2) - (wall_height/2);
         float end_y = (SCREEN_HEIGHT/2) + (wall_height/2);

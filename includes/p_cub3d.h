@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 15:14:52 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/14 08:37:02 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/14 09:10:09 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_colors
 
 typedef struct s_map
 {
-    char **grid_map;
+    char **map;
     int width;
     int height;
 } t_map;

@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 09:45:11 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/11 15:21:27 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/14 09:10:06 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 
 typedef struct s_player {
     float x, y;
-    float dir_x, dir_y;
+    float dir_x,dir_y;
     float fov ;
     float speed;
     float angle;
@@ -57,13 +57,11 @@ typedef struct s_img {
 
 typedef struct s_map
 {
-    char    **map;
-    int     width;
-    int     height;
-    float  player_x;
-    float  player_y;
-    char    player_dir;
-}   t_map;
+    char **map;
+    int width;
+    int height;
+} t_map;
+
 
 typedef struct s_game {
     void *mlx;

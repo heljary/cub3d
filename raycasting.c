@@ -6,7 +6,7 @@
 /*   By: heljary <heljary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:43:09 by heljary           #+#    #+#             */
-/*   Updated: 2025/10/09 12:21:35 by heljary          ###   ########.fr       */
+/*   Updated: 2025/10/15 11:04:48 by heljary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@ void	ft_more_ray(t_game *game, float ray_x, float ray_y)
 
 float	get_ray_distance(t_game *game, float ray_angle)
 {
-	float (ray_x), (ray_y), (dirRay_x), (dirRay_y), (step), (distance);
-	int (map_x), (map_y);
-	ray_x = game->player.x + 0.5;
-	ray_y = game->player.y + 0.5;
-	dirRay_x = cos(ray_angle);
-	dirRay_y = sin(ray_angle);
-	step = 0.01;
+	float ray_x, ray_y, dirRay_x, dirRay_y, step, distance;
+	int map_x, map_y;
+
+	ray_x = game->player.x;
+	ray_y = game->player.y;
+	dirRay_x = cosf(ray_angle);
+	dirRay_y = sinf(ray_angle);
+	step = 0.01f;
 	while (1)
 	{
 		map_x = (int)ray_x;
@@ -61,22 +62,28 @@ void	wall_height_projection(t_game *game)
 	float	end_y;
 	float	wall_height;
 
-	int (column), (y);
-	float (ray_angle), (distance), (fish_eye_distance), (start_y);
+	int column, y;
+	float ray_angle, distance, perp_distance, start_y;
+	float dist_proj = (SCREEN_WIDTH / 2.0f) / tanf(game->player.fov / 2.0f);
+
 	column = 0;
-	while (column < SCREEN_WIDTH - 1)
+	while (column < SCREEN_WIDTH)
 	{
-		ray_angle = game->player.angle - (game->player.fov / 2) + (float)column
-			* (game->player.fov / SCREEN_WIDTH);
+		ray_angle = game->player.angle - (game->player.fov / 2.0f)
+			+ (float)column * (game->player.fov / (float)SCREEN_WIDTH);
 		distance = get_ray_distance(game, ray_angle);
-		fish_eye_distance = distance * cos(ray_angle - game->player.angle);
-		if (fish_eye_distance < 0)
-			fish_eye_distance = 0.01f;
-		wall_height = SCREEN_HEIGHT / fish_eye_distance;
-		start_y = (SCREEN_HEIGHT / 2) - (wall_height / 2);
-		end_y = (SCREEN_HEIGHT / 2) + (wall_height / 2);
-		y = start_y;
-		while (y < end_y)
+		perp_distance = distance * cosf(ray_angle - game->player.angle);
+		if (perp_distance <= 0.0001f)
+			perp_distance = 0.0001f;
+		wall_height = (1.0f / perp_distance) * dist_proj;
+		start_y = (SCREEN_HEIGHT / 2.0f) - (wall_height / 2.0f);
+		end_y = (SCREEN_HEIGHT / 2.0f) + (wall_height / 2.0f);
+		y = (int)start_y;
+		if (y < 0)
+			y = 0;
+		if (end_y > SCREEN_HEIGHT)
+			end_y = SCREEN_HEIGHT;
+		while ((float)y < end_y)
 		{
 			my_mlx_pixel_put(game->img, column, y, WALL_COLOR);
 			y++;

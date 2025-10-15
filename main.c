@@ -6,7 +6,7 @@
 /*   By: heljary <heljary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:39:34 by heljary           #+#    #+#             */
-/*   Updated: 2025/10/14 09:39:35 by heljary          ###   ########.fr       */
+/*   Updated: 2025/10/15 07:34:41 by heljary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(void)
 		printf("Error: MLX initialization failed\n");
 		return (1);
 	}
-
+    printf("mlx windows -> %p\n",game->mlx);
 	game->map.map = (char *[]){"111111111111111111111111111",
 		"100000000000000000000000001", "100000000000000000000000001",
 		"100000000000000000000000001", "100000000000000000000000001",
@@ -40,7 +40,6 @@ int	main(void)
 	game->map.height = 15;
 	game->map.player_x = 2.5;
 	game->map.player_y = 2.5;
-	game->map.player_dir = 'N';
 
 	game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
 	if (!game->win)

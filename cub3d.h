@@ -6,7 +6,7 @@
 /*   By: heljary <heljary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 08:40:42 by heljary           #+#    #+#             */
-/*   Updated: 2025/10/14 09:27:01 by heljary          ###   ########.fr       */
+/*   Updated: 2025/10/15 10:38:21 by heljary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include <string.h>
 # define PI 3.14159265358979323846
-# define SCREEN_WIDTH 1000
-# define SCREEN_HEIGHT 800
+# define SCREEN_WIDTH 1070
+# define SCREEN_HEIGHT 460
 # define CEILING_COLOR 0x000000
 # define FLOOR_COLOR 0x8B4513
 # define WALL_COLOR 0xFFFFFF
@@ -85,4 +85,5 @@ void			wall_height_projection(t_game *game);
 void			ft_draw(t_game *game);
 void			ft_move(t_game *game, int key, float *new_x, float *new_y);
 int				key_hook(int key, void *pram);
+void			ft_more_ray(t_game *game, float ray_x, float ray_y);
 #endif

@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 15:14:52 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/15 10:41:38 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:16:57 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <fcntl.h>
 
 typedef struct s_textures 
 {
@@ -50,5 +51,7 @@ typedef struct s_data
 
 
 
+
+char **read_file_lines(const char *filename);
 
 #endif

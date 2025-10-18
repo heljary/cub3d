@@ -6,7 +6,7 @@
 /*   By: heljary <heljary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:27:19 by heljary           #+#    #+#             */
-/*   Updated: 2025/10/08 10:43:20 by heljary          ###   ########.fr       */
+/*   Updated: 2025/10/18 10:20:58 by heljary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,6 @@ int	is_valid_pos(t_game *game, float x, float y)
 		return (0);
 	return (1);
 }
+
+
+

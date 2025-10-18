@@ -6,7 +6,7 @@
 /*   By: heljary <heljary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 08:40:42 by heljary           #+#    #+#             */
-/*   Updated: 2025/10/15 10:38:21 by heljary          ###   ########.fr       */
+/*   Updated: 2025/10/18 11:33:38 by heljary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define SCREEN_HEIGHT 460
 # define CEILING_COLOR 0x000000
 # define FLOOR_COLOR 0x8B4513
-# define WALL_COLOR 0xFFFFFF
+# define WALL_COLOR 0x67151c
 # define KEY_A 97
 # define KEY_D 100
 # define KEY_S 115
@@ -78,12 +78,11 @@ void			draw_tile(t_game *game, int map_x, int map_y,
 void			draw_minimap(t_game *game);
 int				is_valid_pos(t_game *game, float x, float y);
 void			draw_player(t_game *game);
-float			calcule_distance(float ray_x, float ray_y, float px, float py);
 float			get_ray_distance(t_game *game, float ray_angle);
 void			draw_background(t_game *game);
 void			wall_height_projection(t_game *game);
 void			ft_draw(t_game *game);
 void			ft_move(t_game *game, int key, float *new_x, float *new_y);
 int				key_hook(int key, void *pram);
-void			ft_more_ray(t_game *game, float ray_x, float ray_y);
+void			ft_more_ray(t_game *game);
 #endif

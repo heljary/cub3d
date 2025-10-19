@@ -6,7 +6,7 @@
 /*   By: heljary <heljary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:30:59 by heljary           #+#    #+#             */
-/*   Updated: 2025/10/18 08:23:33 by heljary          ###   ########.fr       */
+/*   Updated: 2025/10/19 10:36:32 by heljary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	draw_background(t_game *game)
 void	ft_draw(t_game *game)
 {
 	draw_background(game);
-	wall_height_projection(game);
+	// wall_height_projection(game);
+	render_walls(game);
 	draw_minimap(game);
 	draw_player(game);
 	ft_more_ray(game);

@@ -6,7 +6,7 @@
 /*   By: heljary <heljary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 08:40:42 by heljary           #+#    #+#             */
-/*   Updated: 2025/10/18 11:33:38 by heljary          ###   ########.fr       */
+/*   Updated: 2025/10/19 10:27:49 by heljary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # define PI 3.14159265358979323846
 # define SCREEN_WIDTH 1070
 # define SCREEN_HEIGHT 460
-# define CEILING_COLOR 0x000000
+# define CEILING_COLOR 0x20a7db
 # define FLOOR_COLOR 0x8B4513
-# define WALL_COLOR 0x67151c
+# define WALL_COLOR 0xf26522
 # define KEY_A 97
 # define KEY_D 100
 # define KEY_S 115
@@ -80,7 +80,7 @@ int				is_valid_pos(t_game *game, float x, float y);
 void			draw_player(t_game *game);
 float			get_ray_distance(t_game *game, float ray_angle);
 void			draw_background(t_game *game);
-void			wall_height_projection(t_game *game);
+void			render_walls(t_game *game);
 void			ft_draw(t_game *game);
 void			ft_move(t_game *game, int key, float *new_x, float *new_y);
 int				key_hook(int key, void *pram);

@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:07:48 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/20 12:20:06 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/21 12:56:39 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ typedef struct s_data
 	t_colors		colors;
 	t_map			map;
 }					t_data;
+
+int					open_file(const char *filename);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: heljary <heljary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:39:34 by heljary           #+#    #+#             */
-/*   Updated: 2025/10/19 09:57:12 by heljary          ###   ########.fr       */
+/*   Updated: 2025/10/26 14:19:08 by heljary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	main(void)
 		"111111111111111111111111111111111", 
 		NULL};
 
-	game->map.width = 27;
-	game->map.height = 15;
+	game->map.width = 34;
+	game->map.height = 14;
 	game->map.player_x = 2.5;
 	game->map.player_y = 2.5;
 

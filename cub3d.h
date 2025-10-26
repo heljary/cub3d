@@ -6,7 +6,7 @@
 /*   By: heljary <heljary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 08:40:42 by heljary           #+#    #+#             */
-/*   Updated: 2025/10/19 10:27:49 by heljary          ###   ########.fr       */
+/*   Updated: 2025/10/26 13:29:56 by heljary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define SCREEN_HEIGHT 460
 # define CEILING_COLOR 0x20a7db
 # define FLOOR_COLOR 0x8B4513
-# define WALL_COLOR 0xf26522
+# define WALL_COLOR 0xFFFFFFF
 # define KEY_A 97
 # define KEY_D 100
 # define KEY_S 115

@@ -6,7 +6,7 @@
 /*   By: heljary <heljary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:27:19 by heljary           #+#    #+#             */
-/*   Updated: 2025/10/18 10:20:58 by heljary          ###   ########.fr       */
+/*   Updated: 2025/10/26 14:38:20 by heljary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color)
 int	close_window(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
+	free(game);
 	exit(0);
-	return (0);
 }
 
 int	is_valid_pos(t_game *game, float x, float y)

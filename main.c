@@ -6,7 +6,7 @@
 /*   By: heljary <heljary@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:39:34 by heljary           #+#    #+#             */
-/*   Updated: 2025/10/26 14:19:08 by heljary          ###   ########.fr       */
+/*   Updated: 2025/10/26 14:33:52 by heljary          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(void)
 		return (1);
 	}
 	game->size_pxl = 2;
-	game->player.angle = 0 * PI / 180.0;
+	game->player.angle = 90 * PI / 180.0;
 	game->map_width = 27;
 	game->map_height = 14;
 	game->player.fov = 60 * PI / 180.0;

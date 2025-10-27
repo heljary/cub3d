@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_file.c                                        :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 13:42:11 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/25 13:53:15 by haitaabe         ###   ########.fr       */
+/*   Created: 2025/10/27 10:19:52 by haitaabe          #+#    #+#             */
+/*   Updated: 2025/10/27 10:33:03 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "p_cub3d.h"
 
-int	open_file(const char *filename)
+char **read_file_lines(int fd)
 {
-	int	fd;
-
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-		perror("Cub3D");
-		exit(EXIT_FAILURE);
-	}
-	return (fd);
+    char buf[1024 + 1];
+    int read_f = read(fd, buf, 1024);
 }

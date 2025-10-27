@@ -6,7 +6,7 @@
 /*   By: haitaabe <haitaabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 15:14:52 by haitaabe          #+#    #+#             */
-/*   Updated: 2025/10/17 15:16:57 by haitaabe         ###   ########.fr       */
+/*   Updated: 2025/10/23 18:28:28 by haitaabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_data
 
 
 
-char **read_file_lines(const char *filename);
+int	open_file(const char *filename);
+char **read_file_lines(int fd);
 
 #endif

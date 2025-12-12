@@ -22,9 +22,22 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, unsigned int color)
 	*(unsigned int *)(img->addr + offset) = color;
 }
 
+
 int	close_window(t_game *game)
 {
-	mlx_destroy_window(game->mlx, game->win);
+	if (!game)
+		exit(0);
+	if (game->img && game->img->img)
+		mlx_destroy_image(game->mlx, game->img->img);
+	if (game->img)
+		free(game->img);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 	free(game);
 	exit(0);
 }
